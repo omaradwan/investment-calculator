@@ -10,14 +10,16 @@ function App() {
     setValues(prvValues=>{
     
       let updatedArray=[...prvValues];
-      updatedArray[indx]=event.target.value;
+      updatedArray[indx]=+event.target.value;
       return updatedArray
     })
   }
+  let isValidInput=values[3]>0;
   return (
     <>
       <Input first="Initial investment" second="Annual salary" third="Expected return" fourth="duration" onChange={handleChange}/>
-      <Table values={values}/>
+      {!isValidInput&&<p className="center">please enter valid duration</p>}
+      {isValidInput&&<Table values={values}/>}
     </>
     
    
